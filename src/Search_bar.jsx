@@ -42,6 +42,7 @@ const Search_bar = () => {
 
       <Navbar />
       <Text />
+      <div className={style.con}>
       <div className={style.search}>
         <input type="search" onChange={fetchData} placeholder="Search Judgements" />
 
@@ -66,7 +67,7 @@ const Search_bar = () => {
                     <p class="leading-relaxed text-base">{user.headline}</p>
                     <div class="flex md:mt-4 mt-6">
                       <button class="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded"><Link to={`/details/${user.tid}`}>detail</Link></button>
-                      <button class="text-indigo-500 inline-flex items-center ml-4">SUMMARY</button>
+                      <button class="text-indigo-500 inline-flex items-center ml-4"><Link to={`/summary/${user.tid}`}>summary</Link></button>
                     </div>
                   </div>
                 </div>
@@ -74,7 +75,7 @@ const Search_bar = () => {
             ))}
           </ul>
 
-        )} </div>
+        )} </div> </div>
 
     </>
 

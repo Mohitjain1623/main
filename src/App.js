@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from './Layout';
 import Details from './components/Details';
+import Summary from './components/Summary';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Search_bar />} />
           <Route path="details/:id" element={<Details />} />
+          <Route path="summary/:id" element={<Summary />}/>
         
         </Route>
       </Routes>
