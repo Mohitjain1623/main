@@ -42,7 +42,7 @@ const Search_bar = () => {
 
       <Navbar />
       <Text />
-      <div className={style.con}>
+      
       <div className={style.search}>
         <input type="search" onChange={fetchData} placeholder="Search Judgements" />
 
@@ -75,7 +75,7 @@ const Search_bar = () => {
             ))}
           </ul>
 
-        )} </div> </div>
+        )} </div>
 
     </>
 
