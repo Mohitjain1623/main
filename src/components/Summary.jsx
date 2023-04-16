@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import { useParams} from 'react-router-dom';
 
 function Summary() {
@@ -26,6 +26,44 @@ function Summary() {
     setInput1(event.target.value);
   }
 
+  const Details = ()=>{
+    const {id} = useParams();
+    const [data, setData] = useState()
+
+
+    const [title, setTitle] = useState('')
+    const [doc, setDoc] = useState('')
+
+    const getData = (id) =>{
+
+
+    fetch(`http://127.0.0.1:8000/summary/judgements/${id}/detail`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+        setTitle(result.title)
+        setDoc(result.doc)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+     }
+
+    useEffect(()=>{
+        getData(id)
+    },[id])
+
+    function strip_html_tags(str) {
+      if ((str === null) || (str === ''))
+        return false;
+
+      else
+        str = str.toString();
+      return str.replace(/<[^>]*>/g, '');
+    }
+  }
+
   return (
     <div className="flex flex-col md:px-12 px-4 bg-background font-poppins items-center min-h-screen">
     <h1 className="md:text-6xl text-4xl font-bold text-primary mt-10">
@@ -51,7 +89,7 @@ function Summary() {
             id="input1"
             className="focus:outline-none focus:ring-4 w-full focus:ring-active text-base p-4 rounded-md"
             value={input1} // Display default value
-            onChange={handleInput1Change}
+            onChange={strip_html_tags(doc)}
           />
         </div>
       </div>
